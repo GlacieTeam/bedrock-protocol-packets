@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bedrock-protocol-packets"
+version = "0.1.0"
+authors = [{ name = "GlacieTeam" }]
+description = "Minecraft Bedrock Packets Codec Library"
+readme = "README.md"
+requires-python = ">=3"
+license = { text = "MPL-2.0" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "bedrock-protocol-binarystream >= 1.1.0",
+    "bedrock-protocol-nbt >= 1.1.0",
+]
+
+[project.urls]
+homepage = "https://github.com/GlacieTeam/bedrock-protocol-packets"
+
+[tool.setuptools]
+packages = { find = {} }
