@@ -7,10 +7,10 @@
 
 from bedrock_protocol.binarystream import BinaryStream, ReadOnlyBinaryStream
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
-from abc import ABC, abstractmethod
+from bedrock_protocol.packets.packet.packet_base import Packet
 
 
-class CloseContainerPacket(ABC):
+class CloseContainerPacket(Packet):
     window_id: int
     window_type: int
     server: bool
@@ -26,21 +26,17 @@ class CloseContainerPacket(ABC):
         self.window_type = window_type
         self.server = server
 
-    @abstractmethod
     def get_packet_id(self) -> MinecraftPacketIds:
         return MinecraftPacketIds.ContainerClose
 
-    @abstractmethod
     def get_packet_name(self) -> str:
         return "CloseContainerPacket"
 
-    @abstractmethod
     def write(self, stream: BinaryStream) -> None:
         stream.write_varint(self.window_id)
         stream.write_varint(self.window_type)
         stream.write_bool(self.server)
 
-    @abstractmethod
     def read(self, stream: ReadOnlyBinaryStream) -> None:
         self.window_id = stream.get_varint()
         self.window_type = stream.get_varint()
