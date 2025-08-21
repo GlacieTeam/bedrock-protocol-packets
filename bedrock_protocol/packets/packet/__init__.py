@@ -12,6 +12,9 @@ from bedrock_protocol.packets.packet.unimplemented_packet import (
 from bedrock_protocol.packets.packet.update_block_packet import UpdateBlockPacket
 from bedrock_protocol.packets.packet.remove_actor_packet import RemoveActorPacket
 from bedrock_protocol.packets.packet.block_actor_data_packet import BlockActorDataPacket
+from bedrock_protocol.packets.packet.open_container_packet import OpenContainerPacket
+from bedrock_protocol.packets.packet.close_container_packet import CloseContainerPacket
+from bedrock_protocol.packets.packet.level_sound_packet import LevelSoundEventPacket
 
 __all__ = [
     "Packet",
@@ -19,4 +22,7 @@ __all__ = [
     "UpdateBlockPacket",
     "RemoveActorPacket",
     "BlockActorDataPacket",
+    "OpenContainerPacket",
+    "CloseContainerPacket",
+    "LevelSoundEventPacket"
 ]
