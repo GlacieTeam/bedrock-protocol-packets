@@ -10,20 +10,19 @@ from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 
 
 class MinecraftPackets:
+    _all_packets_map = {
+        MinecraftPacketIds.RemoveActor: RemoveActorPacket,  # 14
+        MinecraftPacketIds.UpdateBlock: UpdateBlockPacket,  # 21
+        MinecraftPacketIds.ContainerOpen: ContainerOpenPacket,  # 46
+        MinecraftPacketIds.ContainerClose: ContainerClosePacket,  # 47
+        MinecraftPacketIds.BlockActorData: BlockActorDataPacket,  # 56
+        MinecraftPacketIds.LevelSoundEvent: LevelSoundEventPacket,  # 123
+    }
+
     @staticmethod
     def create_packet(packet_id: MinecraftPacketIds) -> Packet:
-        match packet_id:  ## match requires Python 3.10+
-            case MinecraftPacketIds.RemoveActor:  # 14
-                return RemoveActorPacket()
-            case MinecraftPacketIds.UpdateBlock:  # 21
-                return UpdateBlockPacket()
-            case MinecraftPacketIds.ContainerOpen:  # 46
-                return ContainerOpenPacket()
-            case MinecraftPacketIds.ContainerClose:  # 47
-                return ContainerClosePacket()
-            case MinecraftPacketIds.BlockActorData:  # 56
-                return BlockActorDataPacket()
-            case MinecraftPacketIds.LevelSoundEvent:  # 123
-                return LevelSoundEventPacket()
-            case _:
-                return UnimplementedPacket(packet_id)
+        packet_class = MinecraftPackets._all_packets_map.get(packet_id)
+        if packet_class is not None:
+            return packet_class()
+        else:
+            return UnimplementedPacket(packet_id)
