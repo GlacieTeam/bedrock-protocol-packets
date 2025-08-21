@@ -8,10 +8,10 @@
 from bedrock_protocol.binarystream import BinaryStream, ReadOnlyBinaryStream
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 from bedrock_protocol.packets.types.network_position import NetworkBlockPosition
-from abc import ABC, abstractmethod
+from bedrock_protocol.packets.packet.packet_base import Packet
 
 
-class OpenContainerPacket(ABC):
+class OpenContainerPacket(Packet):
     window_id: int
     window_type: int
     pos: NetworkBlockPosition
@@ -30,22 +30,18 @@ class OpenContainerPacket(ABC):
         self.block_position: NetworkBlockPosition = block_position
         self.container_unique_id = container_unique_id
 
-    @abstractmethod
     def get_packet_id(self) -> MinecraftPacketIds:
         return MinecraftPacketIds.ContainerOpen
 
-    @abstractmethod
     def get_packet_name(self) -> str:
         return "OpenContainerPacket"
 
-    @abstractmethod
     def write(self, stream: BinaryStream) -> None:
         stream.write_varint(self.window_id)
         stream.write_varint(self.window_type)
         self.block_position.write(stream)
         stream.write_varint(self.container_unique_id)
 
-    @abstractmethod
     def read(self, stream: ReadOnlyBinaryStream) -> None:
         self.window_id = stream.get_varint()
         self.window_type = stream.get_varint()
