@@ -8,10 +8,10 @@
 from bedrock_protocol.binarystream import BinaryStream, ReadOnlyBinaryStream
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 from bedrock_protocol.packets.types.network_position import NetworkBlockPosition
-from abc import ABC, abstractmethod
+from bedrock_protocol.packets.packet.packet_base import Packet
 
 
-class LevelSoundEventPacket(ABC):
+class LevelSoundEventPacket(Packet):
     sound_type: int
     block_position: NetworkBlockPosition
     extra_data: int
@@ -39,15 +39,12 @@ class LevelSoundEventPacket(ABC):
         self.global_sound = global_sound
         self.actor_unique_id = actor_unique_id
 
-    @abstractmethod
     def get_packet_id(self) -> MinecraftPacketIds:
         return MinecraftPacketIds.LevelSoundEvent
 
-    @abstractmethod
     def get_packet_name(self) -> str:
         return "LevelSoundEventPacket"
 
-    @abstractmethod
     def write(self, stream: BinaryStream) -> None:
         stream.write_unsigned_varint(self.sound_type)
         self.block_position.write(stream)
@@ -57,7 +54,6 @@ class LevelSoundEventPacket(ABC):
         stream.write_bool(self.global_sound)
         stream.write_varint64(self.actor_unique_id)
 
-    @abstractmethod
     def read(self, stream: ReadOnlyBinaryStream) -> None:
         self.sound_type = stream.get_unsigned_varint()
         self.block_position = self.block_position.read(stream)
