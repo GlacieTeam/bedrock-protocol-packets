@@ -10,6 +10,7 @@ from bedrock_protocol.packets.minecraft_packets import MinecraftPackets
 from bedrock_protocol.packets.shared_constants import SharedConstants
 from bedrock_protocol.packets.packet import *
 from bedrock_protocol.packets.types import *
+from bedrock_protocol.packets.enums import *
 
 __all__ = [
     "MinecraftPacketIds",
@@ -27,4 +28,6 @@ __all__ = [
     "NetworkBlockPosition",
     "UUID",
     # Add More Types
+    "LevelSoundEventType",
+    # Add More Enums
 ]

@@ -9,10 +9,11 @@ from bedrock_protocol.binarystream import BinaryStream, ReadOnlyBinaryStream
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 from bedrock_protocol.packets.types.network_position import NetworkBlockPosition
 from bedrock_protocol.packets.packet.packet_base import Packet
+from bedrock_protocol.packets.enums.level_sound_event import LevelSoundEventType
 
 
 class LevelSoundEventPacket(Packet):
-    sound_type: int
+    sound_type: LevelSoundEventType
     block_position: NetworkBlockPosition
     extra_data: int
     entity_type: str
@@ -22,7 +23,7 @@ class LevelSoundEventPacket(Packet):
 
     def __init__(
         self,
-        sound_type: int = 0,
+        sound_type: LevelSoundEventType = LevelSoundEventType.Undefined,
         pos: NetworkBlockPosition = NetworkBlockPosition(),
         extra_data: int = 0,
         entity_type: str = "",
