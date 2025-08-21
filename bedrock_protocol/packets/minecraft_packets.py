@@ -17,7 +17,13 @@ class MinecraftPackets:
                 return RemoveActorPacket()
             case MinecraftPacketIds.UpdateBlock:  # 21
                 return UpdateBlockPacket()
+            case MinecraftPacketIds.ContainerOpen: # 46
+                return OpenContainerPacket()
+            case MinecraftPacketIds.ContainerClose: # 47
+                return CloseContainerPacket()
             case MinecraftPacketIds.BlockActorData:  # 56
                 return BlockActorDataPacket()
+            case MinecraftPacketIds.LevelSoundEvent: # 123
+                return LevelSoundEventPacket()
             case _:
                 return UnimplementedPacket(packet_id)
