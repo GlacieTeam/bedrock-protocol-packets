@@ -20,8 +20,8 @@ __all__ = [
     "UpdateBlockPacket",
     "RemoveActorPacket",
     "BlockActorDataPacket",
-    "OpenContainerPacket",
-    "CloseContainerPacket",
+    "ContainerOpenPacket",
+    "ContainerClosePacket",
     "LevelSoundEventPacket",
     # Add More Packets
     "NetworkBlockPosition",

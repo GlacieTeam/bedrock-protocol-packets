@@ -11,7 +11,7 @@ from bedrock_protocol.packets.types.network_position import NetworkBlockPosition
 from bedrock_protocol.packets.packet.packet_base import Packet
 
 
-class OpenContainerPacket(Packet):
+class ContainerOpenPacket(Packet):
     window_id: int
     window_type: int
     pos: NetworkBlockPosition
@@ -22,7 +22,7 @@ class OpenContainerPacket(Packet):
         window_id: int = 0,
         window_type: int = 0,
         block_position: NetworkBlockPosition = NetworkBlockPosition(),
-        container_unique_id: int = 0
+        container_unique_id: int = 0,
     ):
         super().__init__()
         self.window_id = window_id
@@ -34,7 +34,7 @@ class OpenContainerPacket(Packet):
         return MinecraftPacketIds.ContainerOpen
 
     def get_packet_name(self) -> str:
-        return "OpenContainerPacket"
+        return "ContainerOpenPacket"
 
     def write(self, stream: BinaryStream) -> None:
         stream.write_varint(self.window_id)

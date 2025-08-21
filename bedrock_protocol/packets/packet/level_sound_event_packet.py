@@ -27,8 +27,8 @@ class LevelSoundEventPacket(Packet):
         extra_data: int = 0,
         entity_type: str = "",
         baby_mob: bool = False,
-        global_sound: bool = False, 
-        actor_unique_id: int = 0
+        global_sound: bool = False,
+        actor_unique_id: int = 0,
     ):
         super().__init__()
         self.sound_type = sound_type

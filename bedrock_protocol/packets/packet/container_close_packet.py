@@ -10,17 +10,12 @@ from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 from bedrock_protocol.packets.packet.packet_base import Packet
 
 
-class CloseContainerPacket(Packet):
+class ContainerClosePacket(Packet):
     window_id: int
     window_type: int
     server: bool
 
-    def __init__(
-        self,
-        window_id: int = 0,
-        window_type: int = 0,
-        server: bool = False
-    ):
+    def __init__(self, window_id: int = 0, window_type: int = 0, server: bool = False):
         super().__init__()
         self.window_id = window_id
         self.window_type = window_type
@@ -30,7 +25,7 @@ class CloseContainerPacket(Packet):
         return MinecraftPacketIds.ContainerClose
 
     def get_packet_name(self) -> str:
-        return "CloseContainerPacket"
+        return "ContainerClosePacket"
 
     def write(self, stream: BinaryStream) -> None:
         stream.write_varint(self.window_id)
