@@ -14,7 +14,7 @@ from bedrock_protocol.packets.packet.remove_actor_packet import RemoveActorPacke
 from bedrock_protocol.packets.packet.block_actor_data_packet import BlockActorDataPacket
 from bedrock_protocol.packets.packet.open_container_packet import OpenContainerPacket
 from bedrock_protocol.packets.packet.close_container_packet import CloseContainerPacket
-from bedrock_protocol.packets.packet.level_sound_packet import LevelSoundEventPacket
+from bedrock_protocol.packets.packet.level_sound_event_packet import LevelSoundEventPacket
 
 __all__ = [
     "Packet",

@@ -22,7 +22,7 @@ __all__ = [
     "BlockActorDataPacket",
     "OpenContainerPacket",
     "CloseContainerPacket",
-    "LevelSoundEventPacket"
+    "LevelSoundEventPacket",
     # Add More Packets
     "NetworkBlockPosition",
     "UUID",
