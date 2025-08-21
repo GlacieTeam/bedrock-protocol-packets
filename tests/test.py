@@ -27,9 +27,11 @@ def test2():
     """Test default constructor"""
     for packet_id in MinecraftPacketIds:
         packet = MinecraftPackets.create_packet(packet_id)
+        if packet.get_packet_name() != "UnimplementedPacket":
+            print(packet.get_packet_name())
         packet.serialize()
         packet.deserialize(b"")
-    print("success")  # if no exception
+    print("All packets default constructor test pass")  # if no exception
 
 
 if __name__ == "__main__":

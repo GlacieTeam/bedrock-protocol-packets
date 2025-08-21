@@ -11,10 +11,12 @@ from bedrock_protocol.packets.packet.unimplemented_packet import (
 )
 from bedrock_protocol.packets.packet.update_block_packet import UpdateBlockPacket
 from bedrock_protocol.packets.packet.remove_actor_packet import RemoveActorPacket
+from bedrock_protocol.packets.packet.block_actor_data_packet import BlockActorDataPacket
 
 __all__ = [
     "Packet",
     "UnimplementedPacket",
     "UpdateBlockPacket",
     "RemoveActorPacket",
+    "BlockActorDataPacket",
 ]

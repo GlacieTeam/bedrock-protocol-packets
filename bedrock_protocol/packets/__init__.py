@@ -19,6 +19,7 @@ __all__ = [
     "UnimplementedPacket",
     "UpdateBlockPacket",
     "RemoveActorPacket",
+    "BlockActorDataPacket",
     # Add More Packets
     "NetworkBlockPosition",
     "UUID",

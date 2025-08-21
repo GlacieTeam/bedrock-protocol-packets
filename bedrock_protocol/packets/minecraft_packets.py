@@ -17,5 +17,7 @@ class MinecraftPackets:
                 return RemoveActorPacket()
             case MinecraftPacketIds.UpdateBlock:  # 21
                 return UpdateBlockPacket()
+            case MinecraftPacketIds.BlockActorData:  # 56
+                return BlockActorDataPacket()
             case _:
                 return UnimplementedPacket(packet_id)
