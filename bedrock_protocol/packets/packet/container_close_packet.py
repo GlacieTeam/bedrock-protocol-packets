@@ -11,15 +11,17 @@ from bedrock_protocol.packets.packet.packet_base import Packet
 
 
 class ContainerClosePacket(Packet):
-    window_id: int
-    window_type: int
-    server: bool
+    container_id: int
+    container_type: int
+    is_server_side: bool
 
-    def __init__(self, window_id: int = 0, window_type: int = 0, server: bool = False):
+    def __init__(
+        self, container_id: int = 0, container_type: int = 0, server_side: bool = False
+    ):
         super().__init__()
-        self.window_id = window_id
-        self.window_type = window_type
-        self.server = server
+        self.container_id = container_id
+        self.container_type = container_type
+        self.is_server_side = server_side
 
     def get_packet_id(self) -> MinecraftPacketIds:
         return MinecraftPacketIds.ContainerClose
@@ -28,11 +30,11 @@ class ContainerClosePacket(Packet):
         return "ContainerClosePacket"
 
     def write(self, stream: BinaryStream) -> None:
-        stream.write_varint(self.window_id)
-        stream.write_varint(self.window_type)
-        stream.write_bool(self.server)
+        stream.write_byte(self.container_id)
+        stream.write_byte(self.container_type)
+        stream.write_bool(self.is_server_side)
 
     def read(self, stream: ReadOnlyBinaryStream) -> None:
-        self.window_id = stream.get_varint()
-        self.window_type = stream.get_varint()
-        self.server = stream.get_bool()
+        self.container_id = stream.get_byte()
+        self.container_type = stream.get_byte()
+        self.is_server_side = stream.get_bool()

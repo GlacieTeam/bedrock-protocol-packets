@@ -12,23 +12,23 @@ from bedrock_protocol.packets.packet.packet_base import Packet
 
 
 class ContainerOpenPacket(Packet):
-    window_id: int
-    window_type: int
-    pos: NetworkBlockPosition
-    container_unique_id: int
+    container_id: int
+    container_type: int
+    position: NetworkBlockPosition
+    target_actor_id: int
 
     def __init__(
         self,
-        window_id: int = 0,
-        window_type: int = 0,
+        container_id: int = 0,
+        container_type: int = 0,
         block_position: NetworkBlockPosition = NetworkBlockPosition(),
-        container_unique_id: int = 0,
+        target_actor_id: int = -1,
     ):
         super().__init__()
-        self.window_id = window_id
-        self.window_type = window_type
-        self.block_position: NetworkBlockPosition = block_position
-        self.container_unique_id = container_unique_id
+        self.container_id = container_id
+        self.container_type = container_type
+        self.position = block_position
+        self.target_actor_id = target_actor_id
 
     def get_packet_id(self) -> MinecraftPacketIds:
         return MinecraftPacketIds.ContainerOpen
@@ -37,13 +37,13 @@ class ContainerOpenPacket(Packet):
         return "ContainerOpenPacket"
 
     def write(self, stream: BinaryStream) -> None:
-        stream.write_varint(self.window_id)
-        stream.write_varint(self.window_type)
-        self.block_position.write(stream)
-        stream.write_varint(self.container_unique_id)
+        stream.write_byte(self.container_id)
+        stream.write_byte(self.container_type)
+        self.position.write(stream)
+        stream.write_varint64(self.target_actor_id)
 
     def read(self, stream: ReadOnlyBinaryStream) -> None:
-        self.window_id = stream.get_varint()
-        self.window_type = stream.get_varint()
-        self.block_position.read(stream)
-        self.container_unique_id = stream.get_varint()
+        self.container_id = stream.get_byte()
+        self.container_type = stream.get_byte()
+        self.position.read(stream)
+        self.target_actor_id = stream.get_varint64()

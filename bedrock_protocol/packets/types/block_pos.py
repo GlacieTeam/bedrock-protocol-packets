@@ -8,18 +8,22 @@
 from bedrock_protocol.binarystream import BinaryStream, ReadOnlyBinaryStream
 
 
-class UUID:
-    most_significant_bits: int
-    least_significant_bits: int
+class BlockPos:
+    x: int
+    y: int
+    z: int
 
-    def __init__(self, high: int = 0, low: int = 0):
-        self.most_significant_bits = high
-        self.least_significant_bits = low
+    def __init__(self, x: int = 0, y: int = 0, z: int = 0):
+        self.x = x
+        self.y = y
+        self.z = z
 
     def write(self, stream: BinaryStream) -> None:
-        stream.write_unsigned_int64(self.most_significant_bits)
-        stream.write_unsigned_int64(self.least_significant_bits)
+        stream.write_varint(self.x)
+        stream.write_varint(self.y)
+        stream.write_varint(self.z)
 
     def read(self, stream: ReadOnlyBinaryStream) -> None:
-        self.most_significant_bits = stream.get_unsigned_int64()
-        self.least_significant_bits = stream.get_unsigned_int64()
+        self.x = stream.get_varint()
+        self.y = stream.get_varint()
+        self.z = stream.get_varint()

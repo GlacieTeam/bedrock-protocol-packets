@@ -7,8 +7,12 @@
 
 from bedrock_protocol.packets.types.network_position import NetworkBlockPosition
 from bedrock_protocol.packets.types.mce_uuid import UUID
+from bedrock_protocol.packets.types.block_pos import BlockPos
+from bedrock_protocol.packets.types.vec3 import Vec3
 
 __all__ = [
     "NetworkBlockPosition",
     "UUID",
+    "BlockPos",
+    "Vec3",
 ]

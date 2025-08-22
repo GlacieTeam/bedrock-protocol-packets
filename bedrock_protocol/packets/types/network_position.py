@@ -18,12 +18,12 @@ class NetworkBlockPosition:
         self.y = y
         self.z = z
 
-    def write(self, stream: BinaryStream):
+    def write(self, stream: BinaryStream) -> None:
         stream.write_varint(self.x)
         stream.write_unsigned_varint(self.y)
         stream.write_varint(self.z)
 
-    def read(self, stream: ReadOnlyBinaryStream):
+    def read(self, stream: ReadOnlyBinaryStream) -> None:
         self.x = stream.get_varint()
         self.y = stream.get_unsigned_varint()
         self.z = stream.get_varint()

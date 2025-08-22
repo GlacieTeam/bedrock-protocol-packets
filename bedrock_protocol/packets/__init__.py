@@ -27,6 +27,8 @@ __all__ = [
     # Add More Packets
     "NetworkBlockPosition",
     "UUID",
+    "BlockPos",
+    "Vec3",
     # Add More Types
     "LevelSoundEventType",
     # Add More Enums

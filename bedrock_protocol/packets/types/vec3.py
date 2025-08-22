@@ -8,18 +8,22 @@
 from bedrock_protocol.binarystream import BinaryStream, ReadOnlyBinaryStream
 
 
-class UUID:
-    most_significant_bits: int
-    least_significant_bits: int
+class Vec3:
+    x: float
+    y: float
+    z: float
 
-    def __init__(self, high: int = 0, low: int = 0):
-        self.most_significant_bits = high
-        self.least_significant_bits = low
+    def __init__(self, x: float = 0, y: float = 0, z: float = 0):
+        self.x = x
+        self.y = y
+        self.z = z
 
     def write(self, stream: BinaryStream) -> None:
-        stream.write_unsigned_int64(self.most_significant_bits)
-        stream.write_unsigned_int64(self.least_significant_bits)
+        stream.write_float(self.x)
+        stream.write_float(self.y)
+        stream.write_float(self.z)
 
     def read(self, stream: ReadOnlyBinaryStream) -> None:
-        self.most_significant_bits = stream.get_unsigned_int64()
-        self.least_significant_bits = stream.get_unsigned_int64()
+        self.x = stream.get_float()
+        self.y = stream.get_float()
+        self.z = stream.get_float()
