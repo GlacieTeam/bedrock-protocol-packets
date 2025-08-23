@@ -11,11 +11,11 @@ from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 
 
 class RemoveActorPacket(Packet):
-    runtime_id: int
+    unique_id: int
 
-    def __init__(self, runtime_id: int = 0):
+    def __init__(self, unique_id: int = 0):
         super().__init__()
-        self.runtime_id = runtime_id
+        self.unique_id = unique_id
 
     def get_packet_id(self) -> MinecraftPacketIds:
         return MinecraftPacketIds.RemoveActor
@@ -24,7 +24,7 @@ class RemoveActorPacket(Packet):
         return "RemoveActorPacket"
 
     def write(self, stream: BinaryStream) -> None:
-        stream.write_varint64(self.runtime_id)
+        stream.write_varint64(self.unique_id)
 
     def read(self, stream: ReadOnlyBinaryStream) -> None:
-        self.runtime_id = stream.get_varint64()
+        self.unique_id = stream.get_varint64()
