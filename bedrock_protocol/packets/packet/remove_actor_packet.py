@@ -24,7 +24,7 @@ class RemoveActorPacket(Packet):
         return "RemoveActorPacket"
 
     def write(self, stream: BinaryStream) -> None:
-        stream.write_unsigned_varint64(self.runtime_id)
+        stream.write_varint64(self.runtime_id)
 
     def read(self, stream: ReadOnlyBinaryStream) -> None:
-        self.runtime_id = stream.get_unsigned_varint64()
+        self.runtime_id = stream.get_varint64()
