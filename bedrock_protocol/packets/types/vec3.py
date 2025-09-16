@@ -5,7 +5,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-from bedrock_protocol.binarystream import BinaryStream, ReadOnlyBinaryStream
+from bstream import BinaryStream, ReadOnlyBinaryStream
 
 
 class Vec3:

@@ -5,11 +5,11 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-from bedrock_protocol.binarystream import BinaryStream, ReadOnlyBinaryStream
+from bstream import BinaryStream, ReadOnlyBinaryStream
+from rapidnbt import CompoundTag
 from bedrock_protocol.packets.packet.packet_base import Packet
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 from bedrock_protocol.packets.types.network_position import NetworkBlockPosition
-from bedrock_protocol.nbt import CompoundTag
 
 
 class BlockActorDataPacket(Packet):
@@ -33,8 +33,8 @@ class BlockActorDataPacket(Packet):
 
     def write(self, stream: BinaryStream) -> None:
         self.block_position.write(stream)
-        self.actor_data_tags.write(stream)
+        self.actor_data_tags.serialize(stream)
 
     def read(self, stream: ReadOnlyBinaryStream) -> None:
         self.block_position.read(stream)
-        self.actor_data_tags.read(stream)
+        self.actor_data_tags.deserialize(stream)

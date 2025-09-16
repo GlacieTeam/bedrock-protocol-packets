@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bedrock-protocol-packets"
-version = "0.0.3"
+version = "0.0.4"
 authors = [{ name = "GlacieTeam" }]
 description = "Minecraft Bedrock Packets Codec Library"
 readme = "README.md"
@@ -15,10 +15,7 @@ classifiers = [
     "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
     "Operating System :: OS Independent",
 ]
-dependencies = [
-    "bedrock-protocol-binarystream >= 1.2.0",
-    "bedrock-protocol-nbt >= 1.3.0",
-]
+dependencies = ["bstream >= 1.0.0", "rapidnbt >= 1.0.0"]
 
 [project.urls]
 homepage = "https://github.com/GlacieTeam/bedrock-protocol-packets"
