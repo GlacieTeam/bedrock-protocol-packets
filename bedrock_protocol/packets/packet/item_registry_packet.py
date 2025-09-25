@@ -27,7 +27,11 @@ class ItemRegistryPacket(Packet):
         return "ItemRegistryPacket"
 
     def write(self, stream: BinaryStream) -> None:
-        pass
+        stream.write_unsigned_varint(len(self.item_registry))
+        for data in self.item_registry:
+            data.write(stream)
 
     def read(self, stream: ReadOnlyBinaryStream) -> None:
-        pass
+        length = stream.get_unsigned_varint()
+        for _ in range(length):
+            self.item_registry.append(ItemData().read(stream))
