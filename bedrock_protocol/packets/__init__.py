@@ -30,8 +30,15 @@ __all__ = [
     "BlockPos",
     "Vec3",
     "ItemData",
+    "FullContainerName",
     # Add More Types
     "MinecraftPacketIds",
     "LevelSoundEventType",
+    "ItemStackRequestActionType",
+    "ItemStackRequestSlotInfo",
+    "ItemStackRequestActionTransferBase",
+    "ItemStackRequestAction",
+    "ItemStackRequestData",
+    "ItemStackRequest",
     # Add More Enums
 ]

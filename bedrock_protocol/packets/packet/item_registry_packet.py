@@ -34,4 +34,6 @@ class ItemRegistryPacket(Packet):
     def read(self, stream: ReadOnlyBinaryStream) -> None:
         length = stream.get_unsigned_varint()
         for _ in range(length):
-            self.item_registry.append(ItemData().read(stream))
+            data = ItemData()
+            data.read(stream)
+            self.item_registry.append(data)
