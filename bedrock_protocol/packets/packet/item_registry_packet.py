@@ -18,6 +18,7 @@ class ItemRegistryPacket(Packet):
     def __init__(
         self, item_registry: List[ItemData] = []
     ):  # pylint: disable=dangerous-default-value
+        super().__init__()
         self.item_registry = item_registry
 
     def get_packet_id(self) -> MinecraftPacketIds:

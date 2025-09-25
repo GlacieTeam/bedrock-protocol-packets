@@ -24,6 +24,7 @@ __all__ = [
     "ContainerClosePacket",
     "LevelSoundEventPacket",
     "ItemRegistryPacket",
+    "ItemStackRequestPacket",
     # Add More Packets
     "NetworkBlockPosition",
     "UUID",

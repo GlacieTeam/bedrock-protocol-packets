@@ -18,6 +18,9 @@ from bedrock_protocol.packets.packet.level_sound_event_packet import (
     LevelSoundEventPacket,
 )
 from bedrock_protocol.packets.packet.item_registry_packet import ItemRegistryPacket
+from bedrock_protocol.packets.packet.item_stack_request_packet import (
+    ItemStackRequestPacket,
+)
 
 __all__ = [
     "Packet",
@@ -29,4 +32,5 @@ __all__ = [
     "ContainerClosePacket",
     "LevelSoundEventPacket",
     "ItemRegistryPacket",
+    "ItemStackRequestPacket",
 ]

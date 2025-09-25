@@ -17,6 +17,7 @@ class MinecraftPackets:
         MinecraftPacketIds.ContainerClose: ContainerClosePacket,  # 47
         MinecraftPacketIds.BlockActorData: BlockActorDataPacket,  # 56
         MinecraftPacketIds.LevelSoundEvent: LevelSoundEventPacket,  # 123
+        MinecraftPacketIds.ItemStackRequest: ItemStackRequestPacket,  # 147
         MinecraftPacketIds.ItemRegistryPacket: ItemRegistryPacket,  # 162
     }
 
