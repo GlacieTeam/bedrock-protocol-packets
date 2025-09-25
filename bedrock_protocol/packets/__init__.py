@@ -13,7 +13,6 @@ from bedrock_protocol.packets.types import *
 from bedrock_protocol.packets.enums import *
 
 __all__ = [
-    "MinecraftPacketIds",
     "MinecraftPackets",
     "SharedConstants",
     "Packet",
@@ -24,12 +23,15 @@ __all__ = [
     "ContainerOpenPacket",
     "ContainerClosePacket",
     "LevelSoundEventPacket",
+    "ItemRegistryPacket",
     # Add More Packets
     "NetworkBlockPosition",
     "UUID",
     "BlockPos",
     "Vec3",
+    "ItemData",
     # Add More Types
+    "MinecraftPacketIds",
     "LevelSoundEventType",
     # Add More Enums
 ]

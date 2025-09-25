@@ -5,37 +5,29 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-from abc import ABC, abstractmethod
+from typing import List
 from bstream import BinaryStream, ReadOnlyBinaryStream
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
+from bedrock_protocol.packets.packet.packet_base import Packet
+from bedrock_protocol.packets.types.item_data import ItemData
 
 
-class Packet(ABC):
-    """The Packet base class"""
+class ItemRegistryPacket(Packet):
+    item_registry: List[ItemData]
 
-    @abstractmethod
+    def __init__(
+        self, item_registry: List[ItemData] = []
+    ):  # pylint: disable=dangerous-default-value
+        self.item_registry = item_registry
+
     def get_packet_id(self) -> MinecraftPacketIds:
-        pass
+        return MinecraftPacketIds.ItemRegistryPacket
 
-    @abstractmethod
     def get_packet_name(self) -> str:
-        pass
+        return "ItemRegistryPacket"
 
-    @abstractmethod
     def write(self, stream: BinaryStream) -> None:
         pass
 
-    @abstractmethod
     def read(self, stream: ReadOnlyBinaryStream) -> None:
         pass
-
-    def serialize(self) -> bytes:
-        """Serialize the packet to bytes"""
-        stream = BinaryStream()
-        self.write(stream)
-        return stream.get_and_release_data()
-
-    def deserialize(self, payload: bytes) -> None:
-        """Deserialize the packet from bytes"""
-        stream = ReadOnlyBinaryStream(payload)
-        self.read(stream)

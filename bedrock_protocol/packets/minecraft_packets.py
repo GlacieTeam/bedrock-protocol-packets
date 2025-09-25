@@ -5,7 +5,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-from bedrock_protocol.packets.packet import *
+from bedrock_protocol.packets.packet import *  # pylint: disable=wildcard-import
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 
 
@@ -17,6 +17,7 @@ class MinecraftPackets:
         MinecraftPacketIds.ContainerClose: ContainerClosePacket,  # 47
         MinecraftPacketIds.BlockActorData: BlockActorDataPacket,  # 56
         MinecraftPacketIds.LevelSoundEvent: LevelSoundEventPacket,  # 123
+        MinecraftPacketIds.ItemRegistryPacket: ItemRegistryPacket,  # 162
     }
 
     @staticmethod
@@ -24,5 +25,4 @@ class MinecraftPackets:
         packet_class = MinecraftPackets._all_packets_map.get(packet_id)
         if packet_class is not None:
             return packet_class()
-        else:
-            return UnimplementedPacket(packet_id)
+        return UnimplementedPacket(packet_id)

@@ -8,6 +8,7 @@
 from enum import IntEnum
 
 
+# pylint: disable=invalid-name
 class MinecraftPacketIds(IntEnum):
     KeepAlive = 0
     Login = 1

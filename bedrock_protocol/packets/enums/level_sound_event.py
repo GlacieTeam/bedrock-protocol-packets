@@ -8,6 +8,7 @@
 from enum import IntEnum
 
 
+# pylint: disable=invalid-name
 class LevelSoundEventType(IntEnum):
     ItemUseOn = 0
     Hit = 1
