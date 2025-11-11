@@ -5,6 +5,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
+from ctypes import c_uint32, c_int32
 from bstream import BinaryStream, ReadOnlyBinaryStream
 
 
@@ -20,10 +21,10 @@ class NetworkBlockPosition:
 
     def write(self, stream: BinaryStream) -> None:
         stream.write_varint(self.x)
-        stream.write_unsigned_varint(self.y)
+        stream.write_unsigned_varint(c_uint32(self.y).value)
         stream.write_varint(self.z)
 
     def read(self, stream: ReadOnlyBinaryStream) -> None:
         self.x = stream.get_varint()
-        self.y = stream.get_unsigned_varint()
+        self.y = c_int32(stream.get_unsigned_varint()).value
         self.z = stream.get_varint()
