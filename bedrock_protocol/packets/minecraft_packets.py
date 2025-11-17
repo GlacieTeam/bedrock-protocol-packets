@@ -11,6 +11,8 @@ from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 
 class MinecraftPackets:
     _all_packets_map = {
+        MinecraftPacketIds.Login: LoginPacket, # 1
+        MinecraftPacketIds.Disconnect: DisconnectPacket, # 5
         MinecraftPacketIds.RemoveActor: RemoveActorPacket,  # 14
         MinecraftPacketIds.UpdateBlock: UpdateBlockPacket,  # 21
         MinecraftPacketIds.ContainerOpen: ContainerOpenPacket,  # 46
