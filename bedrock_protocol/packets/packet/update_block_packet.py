@@ -19,13 +19,13 @@ class UpdateBlockPacket(Packet):
 
     def __init__(
         self,
-        pos: NetworkBlockPosition = NetworkBlockPosition(),
+        pos: NetworkBlockPosition | None = None,
         runtime_id: int = 0,
         flag: int = 0,
         layer: int = 0,
     ):
         super().__init__()
-        self.block_position = pos
+        self.block_position = pos or NetworkBlockPosition()
         self.block_runtime_id = runtime_id
         self.update_flag = flag
         self.block_layer = layer

@@ -20,11 +20,11 @@ class ItemStackRequestSlotInfo:
 
     def __init__(
         self,
-        container: FullContainerName = FullContainerName(),
+        container: FullContainerName | None = None,
         slot: int = 0,
         net_id: int = 0,
     ):
-        self.container = container
+        self.container = container or FullContainerName()
         self.slot = slot
         self.net_id = net_id
 
@@ -47,12 +47,12 @@ class ItemStackRequestActionTransferBase:
     def __init__(
         self,
         amount: int = 0,
-        source: ItemStackRequestSlotInfo = ItemStackRequestSlotInfo(),
-        distination: ItemStackRequestSlotInfo = ItemStackRequestSlotInfo(),
+        source: ItemStackRequestSlotInfo | None = None,
+        distination: ItemStackRequestSlotInfo | None = None,
     ):
         self.amount = amount
-        self.source = source
-        self.distination = distination
+        self.source = source or ItemStackRequestSlotInfo()
+        self.distination = distination or ItemStackRequestSlotInfo()
 
     def write(self, stream: BinaryStream) -> None:
         stream.write_byte(self.amount)
@@ -105,17 +105,17 @@ class ItemStackRequestData:
     def __init__(
         self,
         client_request_id: int = 0,
-        strings_to_filter: List[bytes] = [],
+        strings_to_filter: List[bytes] | None = None,
         strings_to_filter_origin: int = 0,
-        request_actions: List[ItemStackRequestAction] = [],
+        request_actions: List[ItemStackRequestAction] | None = None,
         is_parsable_action: bool = False,
         request_buffer: bytes = b"",
         read_position: int = 0,
-    ):  # pylint: disable=dangerous-default-value
+    ):
         self.client_request_id = client_request_id
-        self.strings_to_filter = strings_to_filter
+        self.strings_to_filter = strings_to_filter or []
         self.strings_to_filter_origin = strings_to_filter_origin
-        self.request_actions = request_actions
+        self.request_actions = request_actions or []
         self.is_parsable_action = is_parsable_action
         self.request_buffer = request_buffer
         self.read_position = read_position
@@ -160,9 +160,9 @@ class ItemStackRequest:
     request_data: List[ItemStackRequestData]
 
     def __init__(
-        self, request_data: List[ItemStackRequestData] = []
-    ):  # pylint: disable=dangerous-default-value
-        self.request_data = request_data
+        self, request_data: List[ItemStackRequestData] | None = None
+    ):
+        self.request_data = request_data or []
 
     def write(self, stream: BinaryStream) -> None:
         stream.write_unsigned_varint(len(self.request_data))

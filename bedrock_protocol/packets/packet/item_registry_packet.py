@@ -16,10 +16,10 @@ class ItemRegistryPacket(Packet):
     item_registry: List[ItemData]
 
     def __init__(
-        self, item_registry: List[ItemData] = []
-    ):  # pylint: disable=dangerous-default-value
+        self, item_registry: List[ItemData] | None = None
+    ):
         super().__init__()
-        self.item_registry = item_registry
+        self.item_registry = item_registry or []
 
     def get_packet_id(self) -> MinecraftPacketIds:
         return MinecraftPacketIds.ItemRegistryPacket

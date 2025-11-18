@@ -18,12 +18,12 @@ class BlockActorDataPacket(Packet):
 
     def __init__(
         self,
-        pos: NetworkBlockPosition = NetworkBlockPosition(),
-        nbt: CompoundTag = CompoundTag(),
+        pos: NetworkBlockPosition | None = None,
+        nbt: CompoundTag | None = None,
     ):
         super().__init__()
-        self.block_position = pos
-        self.actor_data_tags = nbt
+        self.block_position = pos or NetworkBlockPosition()
+        self.actor_data_tags = nbt or CompoundTag()
 
     def get_packet_id(self) -> MinecraftPacketIds:
         return MinecraftPacketIds.BlockActorData

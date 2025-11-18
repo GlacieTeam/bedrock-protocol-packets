@@ -22,13 +22,13 @@ class ItemData:
         item_id: int = 0,
         is_component_based: bool = False,
         item_version: int = 0,
-        component_data: CompoundTag = CompoundTag(),
+        component_data: CompoundTag | None = None,
     ):
         self.item_name = item_name
         self.item_id = item_id
         self.is_component_based = is_component_based
         self.item_version = item_version
-        self.component_data = component_data
+        self.component_data = component_data or CompoundTag()
 
     def write(self, stream: BinaryStream) -> None:
         stream.write_string(self.item_name)

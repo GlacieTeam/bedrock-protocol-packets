@@ -14,9 +14,9 @@ from bedrock_protocol.packets.types.item_stack_request import ItemStackRequest
 class ItemStackRequestPacket(Packet):
     request: ItemStackRequest
 
-    def __init__(self, request: ItemStackRequest = ItemStackRequest()):
+    def __init__(self, request: ItemStackRequest | None = None):
         super().__init__()
-        self.request = request
+        self.request = request or ItemStackRequest()
 
     def get_packet_id(self) -> MinecraftPacketIds:
         return MinecraftPacketIds.ItemStackRequest
