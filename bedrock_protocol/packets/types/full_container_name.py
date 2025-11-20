@@ -19,7 +19,7 @@ class FullContainerName:
 
     def write(self, stream: BinaryStream) -> None:
         stream.write_byte(self.container_enum)
-        stream.write_bool(self.dynamic_slot is None)
+        stream.write_bool(self.dynamic_slot is not None)
         if self.dynamic_slot is not None:
             stream.write_unsigned_int(self.dynamic_slot)
 
