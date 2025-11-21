@@ -32,7 +32,10 @@ def test2():
         if packet.get_packet_name() != "UnimplementedPacket":
             data = packet.serialize()
             packet.deserialize(data)
-            print(f"{packet.get_packet_name()} : {data == packet.serialize()}")
+            status = data == packet.serialize()
+            print(f"{packet.get_packet_name()} : {status}")
+            if not status:
+                raise RuntimeError("Packet test failed")
     print("All packets default constructor test pass")  # if no exception
 
 

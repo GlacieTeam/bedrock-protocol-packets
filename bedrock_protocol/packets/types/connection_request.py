@@ -26,9 +26,9 @@ class ConnectionRequest:
         client_properties: str = "",
     ):
         self.login_type = login_type
-        self.certificate = chains or []
+        self.certificate = chains
         self.token = token
-        self.client_properties = client_properties or {}
+        self.client_properties = client_properties
 
     def write(self, stream: BinaryStream) -> None:
         auth_json = {
