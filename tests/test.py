@@ -5,6 +5,8 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
+from bedrock_protocol.packets.packet import *  # pylint: disable=wildcard-import,unused-wildcard-import
+from bedrock_protocol.packets.types import *  # pylint: disable=wildcard-import,unused-wildcard-import
 from bedrock_protocol.packets import *  # pylint: disable=wildcard-import,unused-wildcard-import
 
 

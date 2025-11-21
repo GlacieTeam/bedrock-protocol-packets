@@ -1,4 +1,12 @@
+# Copyright © 2025 GlacieTeam. All rights reserved.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
+# distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+# SPDX-License-Identifier: MPL-2.0
+
 from enum import IntEnum
+
 
 class DisconnectFailReason(IntEnum):
     UNKNOWN = 0
@@ -67,7 +75,7 @@ class DisconnectFailReason(IntEnum):
     BLOCK_MISMATCH = 63
     INVALID_HEIGHTS = 64
     INVALID_WIDTHS = 65
-    CONNECTION_LOST = 66  # deprecated
+    CONNECTION_LOST = 66  # Deprecated
     ZOMBIE_CONNECTION = 67
     SHUTDOWN = 68
     REASON_NOT_SET = 69
