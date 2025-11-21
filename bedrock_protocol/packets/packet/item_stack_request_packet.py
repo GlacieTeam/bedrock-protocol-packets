@@ -5,6 +5,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
+from typing import Optional
 from bstream import BinaryStream, ReadOnlyBinaryStream
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 from bedrock_protocol.packets.packet.packet_base import Packet
@@ -14,7 +15,7 @@ from bedrock_protocol.packets.types.item_stack_request import ItemStackRequest
 class ItemStackRequestPacket(Packet):
     request: ItemStackRequest
 
-    def __init__(self, request: ItemStackRequest | None = None):
+    def __init__(self, request: Optional[ItemStackRequest] = None):
         super().__init__()
         self.request = request or ItemStackRequest()
 

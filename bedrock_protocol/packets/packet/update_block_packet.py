@@ -5,6 +5,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
+from typing import Optional
 from bstream import BinaryStream, ReadOnlyBinaryStream
 from bedrock_protocol.packets.packet.packet_base import Packet
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
@@ -19,7 +20,7 @@ class UpdateBlockPacket(Packet):
 
     def __init__(
         self,
-        pos: NetworkBlockPosition | None = None,
+        pos: Optional[NetworkBlockPosition] = None,
         runtime_id: int = 0,
         flag: int = 0,
         layer: int = 0,

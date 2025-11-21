@@ -5,7 +5,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-from bedrock_protocol.packets import UUID
+from bedrock_protocol.packets.types import UUID
 
 if __name__ == "__main__":
     # Test example 550e8432-e29b-41d4-a716-1c45261af03b

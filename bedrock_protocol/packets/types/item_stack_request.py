@@ -20,7 +20,7 @@ class ItemStackRequestSlotInfo:
 
     def __init__(
         self,
-        container: FullContainerName | None = None,
+        container: Optional[FullContainerName] = None,
         slot: int = 0,
         net_id: int = 0,
     ):
@@ -47,8 +47,8 @@ class ItemStackRequestActionTransferBase:
     def __init__(
         self,
         amount: int = 0,
-        source: ItemStackRequestSlotInfo | None = None,
-        distination: ItemStackRequestSlotInfo | None = None,
+        source: Optional[ItemStackRequestSlotInfo] = None,
+        distination: Optional[ItemStackRequestSlotInfo] = None,
     ):
         self.amount = amount
         self.source = source or ItemStackRequestSlotInfo()
@@ -105,9 +105,9 @@ class ItemStackRequestData:
     def __init__(
         self,
         client_request_id: int = 0,
-        strings_to_filter: List[bytes] | None = None,
+        strings_to_filter: Optional[List[bytes]] = None,
         strings_to_filter_origin: int = 0,
-        request_actions: List[ItemStackRequestAction] | None = None,
+        request_actions: Optional[List[ItemStackRequestAction]] = None,
         is_parsable_action: bool = False,
         request_buffer: bytes = b"",
         read_position: int = 0,
@@ -159,9 +159,7 @@ class ItemStackRequestData:
 class ItemStackRequest:
     request_data: List[ItemStackRequestData]
 
-    def __init__(
-        self, request_data: List[ItemStackRequestData] | None = None
-    ):
+    def __init__(self, request_data: Optional[List[ItemStackRequestData]] = None):
         self.request_data = request_data or []
 
     def write(self, stream: BinaryStream) -> None:

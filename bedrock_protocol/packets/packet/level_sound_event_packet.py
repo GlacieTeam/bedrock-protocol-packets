@@ -5,6 +5,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
+from typing import Optional
 from bstream import BinaryStream, ReadOnlyBinaryStream
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 from bedrock_protocol.packets.types.vec3 import Vec3
@@ -24,7 +25,7 @@ class LevelSoundEventPacket(Packet):
     def __init__(
         self,
         sound_type: LevelSoundEventType = LevelSoundEventType.Undefined,
-        pos: Vec3 | None = None,
+        pos: Optional[Vec3] = None,
         extra_data: int = 0,
         entity_type: str = "",
         baby_mob: bool = False,

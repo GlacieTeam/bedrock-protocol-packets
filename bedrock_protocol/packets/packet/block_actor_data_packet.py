@@ -5,6 +5,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
+from typing import Optional
 from bstream import BinaryStream, ReadOnlyBinaryStream
 from rapidnbt import CompoundTag
 from bedrock_protocol.packets.packet.packet_base import Packet
@@ -18,8 +19,8 @@ class BlockActorDataPacket(Packet):
 
     def __init__(
         self,
-        pos: NetworkBlockPosition | None = None,
-        nbt: CompoundTag | None = None,
+        pos: Optional[NetworkBlockPosition] = None,
+        nbt: Optional[CompoundTag] = None,
     ):
         super().__init__()
         self.block_position = pos or NetworkBlockPosition()

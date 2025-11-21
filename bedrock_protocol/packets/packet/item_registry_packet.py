@@ -5,7 +5,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-from typing import List
+from typing import List, Optional
 from bstream import BinaryStream, ReadOnlyBinaryStream
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 from bedrock_protocol.packets.packet.packet_base import Packet
@@ -15,9 +15,7 @@ from bedrock_protocol.packets.types.item_data import ItemData
 class ItemRegistryPacket(Packet):
     item_registry: List[ItemData]
 
-    def __init__(
-        self, item_registry: List[ItemData] | None = None
-    ):
+    def __init__(self, item_registry: Optional[List[ItemData]] = None):
         super().__init__()
         self.item_registry = item_registry or []
 

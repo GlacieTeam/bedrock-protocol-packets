@@ -5,6 +5,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
+from typing import Optional
 from bstream import BinaryStream, ReadOnlyBinaryStream
 from rapidnbt import CompoundTag
 
@@ -22,7 +23,7 @@ class ItemData:
         item_id: int = 0,
         is_component_based: bool = False,
         item_version: int = 0,
-        component_data: CompoundTag | None = None,
+        component_data: Optional[CompoundTag] = None,
     ):
         self.item_name = item_name
         self.item_id = item_id

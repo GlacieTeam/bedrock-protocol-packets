@@ -5,6 +5,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
+from typing import Optional
 from bstream import BinaryStream, ReadOnlyBinaryStream
 from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 from bedrock_protocol.packets.types.network_position import NetworkBlockPosition
@@ -21,7 +22,7 @@ class ContainerOpenPacket(Packet):
         self,
         container_id: int = 0,
         container_type: int = 0,
-        block_position: NetworkBlockPosition | None = None,
+        block_position: Optional[NetworkBlockPosition] = None,
         target_actor_id: int = -1,
     ):
         super().__init__()
