@@ -24,7 +24,7 @@ class LevelSoundEventPacket(Packet):
     def __init__(
         self,
         sound_type: LevelSoundEventType = LevelSoundEventType.Undefined,
-        pos: Vec3 = Vec3(),
+        pos: Vec3 | None = None,
         extra_data: int = 0,
         entity_type: str = "",
         baby_mob: bool = False,
@@ -33,7 +33,7 @@ class LevelSoundEventPacket(Packet):
     ):
         super().__init__()
         self.sound_type = sound_type
-        self.position = pos
+        self.position = pos or Vec3()
         self.extra_data = extra_data
         self.entity_type = entity_type
         self.is_baby_mob = baby_mob

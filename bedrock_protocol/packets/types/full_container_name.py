@@ -14,12 +14,12 @@ class FullContainerName:
     dynamic_slot: Optional[int]
 
     def __init__(self, container_enum: int = 0, dynamic_slot: Optional[int] = None):
-        self.ontainer_enum = container_enum
+        self.container_enum = container_enum
         self.dynamic_slot = dynamic_slot
 
     def write(self, stream: BinaryStream) -> None:
         stream.write_byte(self.container_enum)
-        stream.write_bool(self.dynamic_slot is None)
+        stream.write_bool(self.dynamic_slot is not None)
         if self.dynamic_slot is not None:
             stream.write_unsigned_int(self.dynamic_slot)
 

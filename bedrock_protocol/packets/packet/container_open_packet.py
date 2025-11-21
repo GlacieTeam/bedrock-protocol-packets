@@ -21,13 +21,13 @@ class ContainerOpenPacket(Packet):
         self,
         container_id: int = 0,
         container_type: int = 0,
-        block_position: NetworkBlockPosition = NetworkBlockPosition(),
+        block_position: NetworkBlockPosition | None = None,
         target_actor_id: int = -1,
     ):
         super().__init__()
         self.container_id = container_id
         self.container_type = container_type
-        self.position = block_position
+        self.position = block_position or NetworkBlockPosition()
         self.target_actor_id = target_actor_id
 
     def get_packet_id(self) -> MinecraftPacketIds:
