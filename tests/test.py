@@ -5,6 +5,8 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
+from bedrock_protocol.packets.packet import *  # pylint: disable=wildcard-import,unused-wildcard-import
+from bedrock_protocol.packets.types import *  # pylint: disable=wildcard-import,unused-wildcard-import
 from bedrock_protocol.packets import *  # pylint: disable=wildcard-import,unused-wildcard-import
 
 
@@ -28,9 +30,12 @@ def test2():
     for packet_id in MinecraftPacketIds:
         packet = MinecraftPackets.create_packet(packet_id)
         if packet.get_packet_name() != "UnimplementedPacket":
-            print(packet.get_packet_name())
-        packet.serialize()
-        packet.deserialize(b"")
+            data = packet.serialize()
+            packet.deserialize(data)
+            status = data == packet.serialize()
+            print(f"{packet.get_packet_name()} : {status}")
+            if not status:
+                raise RuntimeError("Packet test failed")
     print("All packets default constructor test pass")  # if no exception
 
 

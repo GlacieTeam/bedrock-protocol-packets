@@ -18,6 +18,7 @@ from bedrock_protocol.packets.types.item_stack_request import (
     ItemStackRequestData,
     ItemStackRequest,
 )
+from bedrock_protocol.packets.types.connection_request import ConnectionRequest
 
 __all__ = [
     "NetworkBlockPosition",
@@ -31,4 +32,5 @@ __all__ = [
     "ItemStackRequestAction",
     "ItemStackRequestData",
     "ItemStackRequest",
+    "ConnectionRequest",
 ]

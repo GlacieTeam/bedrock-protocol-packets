@@ -9,6 +9,8 @@ from bedrock_protocol.packets.packet.packet_base import Packet
 from bedrock_protocol.packets.packet.unimplemented_packet import (
     UnimplementedPacket,
 )
+from bedrock_protocol.packets.packet.login_packet import LoginPacket
+from bedrock_protocol.packets.packet.disconnect_packet import DisconnectPacket
 from bedrock_protocol.packets.packet.update_block_packet import UpdateBlockPacket
 from bedrock_protocol.packets.packet.remove_actor_packet import RemoveActorPacket
 from bedrock_protocol.packets.packet.block_actor_data_packet import BlockActorDataPacket
@@ -25,6 +27,8 @@ from bedrock_protocol.packets.packet.item_stack_request_packet import (
 __all__ = [
     "Packet",
     "UnimplementedPacket",
+    "LoginPacket",
+    "DisconnectPacket",
     "UpdateBlockPacket",
     "RemoveActorPacket",
     "BlockActorDataPacket",
