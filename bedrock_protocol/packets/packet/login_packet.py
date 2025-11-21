@@ -12,6 +12,7 @@ from bedrock_protocol.packets.minecraft_packet_ids import MinecraftPacketIds
 from bedrock_protocol.packets.packet.packet_base import Packet
 from bedrock_protocol.packets.enums.login_codes import LoginCodes
 
+
 class LoginPacket(Packet):
     def __init__(self):
         self.status = LoginCodes.Unknown
@@ -70,8 +71,7 @@ class LoginPacket(Packet):
         """Decode the payload segment of a JWT (without validation)"""
         dot1 = jwt.find(".")
         dot2 = jwt.find(".", dot1 + 1)
-        payload = jwt[dot1 + 1:dot2]
+        payload = jwt[dot1 + 1 : dot2]
         padding = "=" * (-len(payload) % 4)
         decoded = base64.urlsafe_b64decode(payload + padding)
         return json.loads(decoded.decode("utf-8"))
-

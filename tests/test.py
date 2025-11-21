@@ -30,9 +30,9 @@ def test2():
     for packet_id in MinecraftPacketIds:
         packet = MinecraftPackets.create_packet(packet_id)
         if packet.get_packet_name() != "UnimplementedPacket":
-            print(packet.get_packet_name())
-        packet.serialize()
-        packet.deserialize(b"")
+            data = packet.serialize()
+            packet.deserialize(data)
+            print(f"{packet.get_packet_name()} : {data == packet.serialize()}")
     print("All packets default constructor test pass")  # if no exception
 
 

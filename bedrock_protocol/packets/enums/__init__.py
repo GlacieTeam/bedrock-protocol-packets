@@ -9,8 +9,12 @@ from bedrock_protocol.packets.enums.level_sound_event import LevelSoundEventType
 from bedrock_protocol.packets.enums.item_stack_request_action_type import (
     ItemStackRequestActionType,
 )
+from bedrock_protocol.packets.enums.authentication_type import AuthenticationType
+from bedrock_protocol.packets.enums.disconnect_fail_reason import DisconnectFailReason
 
 __all__ = [
     "LevelSoundEventType",
     "ItemStackRequestActionType",
+    "AuthenticationType",
+    "DisconnectFailReason",
 ]
